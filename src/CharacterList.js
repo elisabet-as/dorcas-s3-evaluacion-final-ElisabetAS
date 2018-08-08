@@ -4,21 +4,21 @@ import CharacterCard from './CharacterCard';
 class CharacterList extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            name: "",
-            house: "",
-            image: ""
-         }
     }
+
     render() { 
         const {characters} = this.props;
-        return ( 
+        return (
             <div>
                 <ul>
-                {characters.map(function(){
+                {characters.map(function(character, index){
                     return (
-                        <li>
-                        <CharacterCard/>
+                        <li key={index}>
+                        <CharacterCard
+                            characterName={character.name}
+                            characterHouse={character.house}
+                            characterImage={character.image}
+                            />
                         </li>
                     );
                 })}

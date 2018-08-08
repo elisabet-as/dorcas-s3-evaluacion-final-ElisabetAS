@@ -6,9 +6,13 @@ class CharacterCard extends Component {
     }
 
     render() { 
+        const {characterName, characterHouse, characterImage}=this.props;
         return ( 
-        <div>
-        </div>
+            <div>
+                <img src={characterImage} alt="Character Photo"/>
+                <h2>{characterName}</h2>
+                <p>{characterHouse}</p>
+            </div>
          );
     }
 }
