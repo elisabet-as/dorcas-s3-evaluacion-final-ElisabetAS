@@ -26,14 +26,21 @@ class App extends Component {
   handleChangeInputValue(event) {
     const inputEvent = event.target;
     this.setState({name: inputEvent.value});
-    const filtered = this.state.characters.filter(function(character){
+    const filtering = this.state.characters.filter(function(character){
       return character.name.includes(inputEvent.value);
     });
-    this.setState({charactersFiltered: filtered});
-    console.log(filtered);
+    this.setState({charactersFiltered: filtering});
+    console.log(filtering);
   }
 
   render() {
+    let filtered;
+    if (this.state.charactersFiltered.length === 0) {
+      filtered = this.state.characters;
+    } else {
+      filtered = this.state.charactersFiltered;
+    }
+
     return (
       <div className="App">
         <header className="header">
@@ -42,9 +49,7 @@ class App extends Component {
         </header>
         <main>
         <CharacterList 
-          characters={this.state.characters}
-          charactersFiltered={this.charactersFiltered}
-          handleChangeInputValue={this.handleChangeInputValue} />
+          characters={filtered} />
         </main>
       </div>
     );
