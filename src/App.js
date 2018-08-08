@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
 import './App.css';
@@ -9,7 +10,8 @@ class App extends Component {
     this.state={
       characters: [],
       charactersFiltered: [],
-      inputName: ""
+      inputName: "",
+      id: "" ,
     }
   this.handleChangeInputValue=this.handleChangeInputValue.bind(this);
   } 
@@ -19,8 +21,17 @@ class App extends Component {
       return response.json();
     })
     .then(json => {
-      this.setState({characters: json})
+      this.setState({characters: json}, this.createIdForCharacter)
     })
+  }
+
+  createIdForCharacter (){
+    for (let i=0; i<this.state.characters.length; i++) {
+      this.state.characters[i] = {
+        ...this.state.characters[i],
+        id: i
+      }
+    }
   }
 
   handleChangeInputValue(event) {
@@ -48,8 +59,15 @@ class App extends Component {
           <Filters handleChangeInputValue={this.handleChangeInputValue}/>
         </header>
         <main>
-        <CharacterList 
-          characters={filtered} />
+          <Switch>
+            <Route 
+              exact 
+              path='/' 
+              render= { () => 
+                <CharacterList
+                  characters={filtered} /> }
+            />
+          </Switch>  
         </main>
       </div>
     );
