@@ -1,6 +1,6 @@
 .detailsContainer {
     border: solid black 1px;
-    background-color: orange;
+    background-color: #ff995f;
     color: white;
     display: flex; 
     width: 500px;
