@@ -1,1 +1,13 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+.mainContent {
+    display: flex;
+    justify-content: center;
+}

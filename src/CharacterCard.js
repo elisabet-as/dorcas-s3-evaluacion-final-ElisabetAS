@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './CharacterCard.css';
 
 class CharacterCard extends Component {
     constructor(props) {
@@ -9,9 +10,11 @@ class CharacterCard extends Component {
         const {characterName, characterHouse, characterImage}=this.props;
         return ( 
             <div>
-                <img src={characterImage} alt="Character Photo"/>
-                <h2>{characterName}</h2>
-                <p>{characterHouse}</p>
+                <img className="photo" src={characterImage} alt="Character Photo"/>
+                <div className="textContainer">
+                <h2 className="name">{characterName}</h2>
+                <p className="house">{characterHouse}</p>
+                </div>
             </div>
          );
     }

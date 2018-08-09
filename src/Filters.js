@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Filters.css';
 
 class Filters extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class Filters extends Component {
         const {handleChangeInputValue}=this.props;
         return ( 
             <div>
-            <input type="text" onChange={handleChangeInputValue}/>
+            <input className="input" type="text" onChange={handleChangeInputValue}/>
             </div>
          );
     }

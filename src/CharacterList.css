@@ -1,0 +1,17 @@
+.characterList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+.character {
+    border: solid black 1px;
+    width: 180px;
+    height: 350px;
+    list-style: none;
+    box-sizing: content-box;
+    background-color: orange;
+}
+
+a {
+    text-decoration: none;
+}
