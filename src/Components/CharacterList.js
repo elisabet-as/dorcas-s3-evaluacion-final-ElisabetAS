@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link } from 'react-router-dom';
 import CharacterCard from './CharacterCard';
-import './CharacterList.css';
+import '../Styles/CharacterList.css';
 
 class CharacterList extends Component {
     constructor(props) {
@@ -10,17 +10,16 @@ class CharacterList extends Component {
 
     render() { 
         const {characters} = this.props;
-        {console.log(characters)}
         return (
             <div>
                 <ul className="characterList">
                 {characters.map(function(character, index){
                     return (
                         <li className="character" key={index}>
-                        <Link to={`/character/{character.id}`}>
+                        <Link to={`/character/${character.id}`}>
                         <CharacterCard
                             characterName={character.name}
-                            characterHouse={character.house}
+                            characterHouse={!character.house ? 'WITHOUT HOUSE' :character.house}
                             characterImage={character.image}
                             />
                         </Link>    

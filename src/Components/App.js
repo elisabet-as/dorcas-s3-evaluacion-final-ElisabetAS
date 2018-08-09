@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Filters from './Filters';
 import CharacterList from './CharacterList';
-import './App.css';
+import '../Styles/App.css';
 import Details from './Details';
 
 class App extends Component {
@@ -47,7 +47,6 @@ class App extends Component {
       }
     });
     this.setState({charactersFiltered: filtering});
-    console.log(filtering);
   }
 
   render() {
@@ -75,9 +74,11 @@ class App extends Component {
             />
             <Route
               path='/character/:id'
-              render= { () => 
+              render= { (props) => 
                 <Details
-                  characters={filtered} /> }
+                  match={props.match}
+                  characters={filtered}
+                   /> }
             />
           </Switch>  
         </main>
