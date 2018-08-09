@@ -6,18 +6,18 @@ class CharacterCard extends Component {
         super(props);
     }
 
-    render() { 
-        const {characterName, characterHouse, characterImage}=this.props;
-        return ( 
+    render() {
+        const { characterName, characterHouse, characterImage } = this.props;
+        return (
             <div>
-                <img className="photo" src={characterImage} alt="Character Photo"/>
+                <img className="photo" src={characterImage} alt="Character Photo" />
                 <div className="textContainer">
-                <h2 className="name">{characterName}</h2>
-                <p className="house">{characterHouse}</p>
+                    <h2 className="name">{characterName}</h2>
+                    <p className="house">{characterHouse}</p>
                 </div>
             </div>
-         );
+        );
     }
 }
- 
+
 export default CharacterCard;
