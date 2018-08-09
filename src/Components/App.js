@@ -22,29 +22,24 @@ class App extends Component {
       return response.json();
     })
     .then(json => {
-      this.setState({characters: json}, this.createIdForCharacter)
-    })
-  }
+      let idCharacters = [];
 
-  createIdForCharacter (){
-    for (let i=0; i<this.state.characters.length; i++) {
-      this.state.characters[i] = {
-        ...this.state.characters[i],
-        id: i
+      for (let i=0; i<json.length; i++) {
+        idCharacters[i] = {
+          ...json[i],
+          id: i
+        }  
       }
-    }
+    this.setState({characters: idCharacters})
+    })
+
   }
 
   handleChangeInputValue(event) {
     const inputEvent = event.target;
     this.setState({inputName: inputEvent.value});
     const filtering = this.state.characters.filter(function(character){
-      //INTENTAR QUE SI NO HAY RESULTADOS PARA LA BUSQUEDA NO PINTEEEE
-      if (inputEvent.value === null) {
-        return 'Not results';
-      } else {
-      return character.name.includes(inputEvent.value);
-      }
+        return character.name.toLowerCase().includes(inputEvent.value.toLowerCase());
     });
     this.setState({charactersFiltered: filtering});
   }
@@ -61,7 +56,7 @@ class App extends Component {
       <div className="App">
         <header className="header">
           <h1 className="title">Harry Potter Characters</h1>
-          <Filters handleChangeInputValue={this.handleChangeInputValue}/>
+          <Filters handleChangeInputValue={this.handleChangeInputValue} />
         </header>
         <main className="mainContent">
           <Switch>

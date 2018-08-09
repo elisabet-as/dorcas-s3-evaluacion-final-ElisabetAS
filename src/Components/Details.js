@@ -6,29 +6,33 @@ class Details extends Component {
         super(props);
     }
     render() {
-        const {characters} = this.props;
-        const {id} = this.props.match.params;
-        const detailsOfCharacters = characters[id];
-        console.log(detailsOfCharacters)
-        if (detailsOfCharacters === undefined) {
-            return 'Loading...'
-        } else {
-            return ( 
-            <div className="detailsContainer">
-                <img className="imageOfDetails" src={detailsOfCharacters.image} alt="Character Photo"/>
-                <section className="characterInfo">
-                <h2 className="nameOfDetails">{detailsOfCharacters.name}</h2>
-                <div className="spanInfoContainer">
-                <span className="info">House: {!detailsOfCharacters.house ? 'WITHOUT HOUSE' :detailsOfCharacters.house}</span>
-                <span className="info">Birth: {!detailsOfCharacters.yearOfBirth ? 'UNKNOWN DATE' :detailsOfCharacters.yearOfBirth}</span>
-                <span className="info">Patronus: {!detailsOfCharacters.patronus ? 'WITHOUT PATRONUS' :detailsOfCharacters.patronus}</span>
-                <span className="info">State: {!detailsOfCharacters.alive ? 'Died' :'Alive'}</span>
-                </div>
-                </section>
+        const {characters, match} = this.props;
+        const id = parseInt(match.params.id);
+            let idCharacter = characters.filter(function(character) {
+               return character.id === id;
+            })
+
+            return (
+            <div>
+            {idCharacter.map(function(detail, index) {
+                return (
+                    <div className="detailsContainer" key={index}>
+                    <img className="imageOfDetails" src={detail.image} alt="Character Photo"/>
+                    <section className="characterInfo">
+                    <h2 className="nameOfDetails">{detail.name}</h2>
+                    <div className="spanInfoContainer">
+                    <span className="info">House: {!detail.house ? 'WITHOUT HOUSE' :detail.house}</span>
+                    <span className="info">Birth: {!detail.yearOfBirth ? 'UNKNOWN DATE' :detail.yearOfBirth}</span>
+                    <span className="info">Patronus: {!detail.patronus ? 'WITHOUT PATRONUS' :detail.patronus}</span>
+                    <span className="info">State: {!detail.alive ? 'Died' :'Alive'}</span>
+                    </div>
+                    </section> 
+                    </div>
+                );
+            })}
             </div>
             );
         }  
     }
-}
  
 export default Details;
