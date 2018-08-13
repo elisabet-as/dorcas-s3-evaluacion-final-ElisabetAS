@@ -4,10 +4,6 @@ import CharacterCard from './CharacterCard';
 import '../Styles/CharacterList.css';
 
 class CharacterList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { characters } = this.props;
         return (

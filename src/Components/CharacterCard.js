@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import '../Styles/CharacterCard.css';
 
 class CharacterCard extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const { characterName, characterHouse, characterImage } = this.props;
         return (

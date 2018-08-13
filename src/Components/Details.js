@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import '../Styles/Details.css';
 
 class Details extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const { characters, match } = this.props;
-        console.log(characters)
         const id = parseInt(match.params.id);
         let idCharacter = characters.filter(function (character) {
             return character.id === id;
