@@ -4,11 +4,11 @@ import Filters from './Filters';
 
 class Home extends Component {
     render() {
-        const { characters } = this.props;
-        const { handleChangeInputValue } = this.props;
+        const { characters, handleChangeInputValue, handleChangeSelectOption } = this.props;
         return (
             <div>
-                <Filters handleChangeInputValue={handleChangeInputValue} />
+                <Filters handleChangeInputValue={handleChangeInputValue}
+                         handleChangeSelectOption={handleChangeSelectOption} />
                 <CharacterList characters={characters} />
             </div>
         );

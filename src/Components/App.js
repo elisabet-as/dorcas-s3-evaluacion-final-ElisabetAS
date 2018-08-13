@@ -11,9 +11,11 @@ class App extends Component {
       characters: [],
       charactersFiltered: [],
       inputName: "",
+      optionSelected: "",
       id: "",
     }
     this.handleChangeInputValue = this.handleChangeInputValue.bind(this);
+    this.handleChangeSelectOption=this.handleChangeSelectOption.bind(this);
   }
   componentDidMount() {
     fetch('https://hp-api.herokuapp.com/api/characters')
@@ -43,6 +45,16 @@ class App extends Component {
     this.setState({ charactersFiltered: filtering });
   }
 
+  handleChangeSelectOption(event) {
+    const {value} = event.target;
+    this.setState({ optionSelected: value });
+    const housesFiltered = this.state.characters.filter(function (character){
+      return character.house === value;
+    });
+
+    this.setState({ charactersFiltered: housesFiltered});
+  }
+
   render() {
     let filtered;
     if (this.state.charactersFiltered.length === 0) {
@@ -66,6 +78,7 @@ class App extends Component {
                 path='/'
                 render={() =>
                   <Home
+                    handleChangeSelectOption={this.handleChangeSelectOption}
                     handleChangeInputValue={this.handleChangeInputValue}
                     characters={filtered} />}
               />

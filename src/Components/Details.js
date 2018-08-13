@@ -7,6 +7,7 @@ class Details extends Component {
     }
     render() {
         const { characters, match } = this.props;
+        console.log(characters)
         const id = parseInt(match.params.id);
         let idCharacter = characters.filter(function (character) {
             return character.id === id;
